@@ -45,67 +45,67 @@ def p_var(p):
     print (n)
     return n
 
-def p_PLS(p):                       #PROGRAMA -> lista_sentencias
+def p_PLS(p):                            #PROGRAMA -> lista_sentencias
     'P : LS'
     p[0] = p[1]
 
-def p_LSLSS(p):                     #lista_sentencias -> lista_sentencias sentencia
+def p_LSLSS(p):                          #lista_sentencias -> lista_sentencias sentencia
     'LS : LS S'
     p[0] = p[1]+p[2]
 
-def p_LSS(p):                       #lista_sentencias -> sentencia
+def p_LSS(p):                            #lista_sentencias -> sentencia
     'LS : S'
     p[0] = p[1]
 
-def p_SE(p):                        #sentencia -> E;
+def p_SE(p):                             #sentencia -> E;
     'S : E ;'
     p[0] = p[1]+p[2]
 
-def p_SW(p):                        #sentencia -> WHILE
+def p_SW(p):                             #sentencia -> WHILE
     'S : W'
     p[0] = p[1]
 
-def p_SIFE(p):                      #sentencia -> IF_ELSE
+def p_SIFE(p):                           #sentencia -> IF_ELSE
     'S : IE'
     p[0] = p[1]
 
-def p_SSWC(p):                      #sentencia -> SWITCH
+def p_SSWC(p):                           #sentencia -> SWITCH
     'S : SW'
     p[0] = p[1]
 
-def p_WWS(p):                       #WHILE -> while (condicion) sentencia ;
+def p_WWS(p):                            #WHILE -> while (condicion) sentencia ;
     'W : while ( C ) S ;'
     p[0] = p[1]+p[2]+p[3]+p[4]+p[5]
 
-def p_WWLS(p):                      #WHILE -> while (condicion) { lista_sentencias }
+def p_WWLS(p):                           #WHILE -> while (condicion) { lista_sentencias }
     'W : while ( C ) { LS }'
     p[0] = p[1]+p[2]+p[3]+p[4]+p[5]+p[6]+p[7]
 
-def p_IEIES(p):                     #IF_ELSE -> IF else sentencia;
+def p_IEIES(p):                          #IF_ELSE -> IF else sentencia;
     'IE : I else S ;'
     p[0] = p[1]+p[2]+p[3]
 
-def p_IEIELS(p):                     #IF_ELSE -> IF else { lista_sentencias }
+def p_IEIELS(p):                         #IF_ELSE -> IF else { lista_sentencias }
     'IE : I else { LS }'
     p[0] = p[1]+p[2]+p[3]+p[4]+p[5]
 
-def p_IICS(p):                       #IF -> IF (condicion) sentencia
+def p_IICS(p):                           #IF -> IF (condicion) sentencia
     'I : IF ( C ) S'
     p[0] = p[1]+p[2]+p[3]+p[4]+p[5]
 
-def p_ICLS(p):                      #IF-> IF (condicion) {lista_sentencias}
+def p_ICLS(p):                           #IF-> IF (condicion) {lista_sentencias}
     'I : IF ( C ) { LS }'
     p[0] = p[1]+p[2]+p[3]+p[4]+p[5]+p[6]+p[7]
 
-def p_SWSWILC(p):                    #SWITCH -> SWITCH(ID) {lista_case}
+def p_SWSWILC(p):                        #SWITCH -> SWITCH(ID) {lista_case}
     'SW : switch ( ID ) { LC }'
     p[0] = p[1]+p[2]+p[3]+p[4]+p[5]+p[6]+p[7]
 
-def p_SWSWILCD(p):                    #SWITCH -> SWITCH(ID) {lista_case DEFAULT}
+def p_SWSWILCD(p):                       #SWITCH -> SWITCH(ID) {lista_case DEFAULT}
     'SW : switch ( ID ) { LC } DF'
     p[0] = p[1]+p[2]+p[3]+p[4]+p[5]+p[6]+p[7]+p[8]
 
-def p_LCC(p):                          #lista_case -> CASE
+def p_LCC(p):                            #lista_case -> CASE
     'LC : CA'
     p[0] = p[1]
 
@@ -113,15 +113,15 @@ def p_LCLCC(p):                          #lista_case -> lista_case CASE
     'LC : LC CA'
     p[0] = p[1]+p[2]
 
-def p_CACAIDSE(p):                      #CASE -> CASE ID : sentencia
+def p_CACAIDSE(p):                       #CASE -> CASE ID : sentencia
     'CA : case ID : S'
     p[0] = p[1]+p[2]+p[3]+p[4]+p[5]+p[6]
 
-def p_CACAIDLS(P):                      #CASE -> CASE ID : { lista_sentencias }
+def p_CACAIDLS(P):                       #CASE -> CASE ID : { lista_sentencias }
     'CA : case ID : { LS }'
     p[0] = p[1]+p[2]+p[3]+p[4]+p[5]+p[6]+p[7]+p[8]
 
-def p_DFDFS(p):                         #DEFAULT -> DEFAULT : sentencia
+def p_DFDFS(p):                          #DEFAULT -> DEFAULT : sentencia
     'DF : default : S'
     p[0] = p[1]+p[2]+p[3]
 
@@ -129,23 +129,23 @@ def p_DFDFLS(p):                         #DEFAULT -> DEFAULT : { lista_sentencia
     'DF : default : { LS }'
     p[0] = p[1]+p[2]+p[3]+p[4]+p[5]+p[6]
 
-def p_CCL(p):                           #CONDICION -> CONDICION_LOGICA
+def p_CCL(p):                            #CONDICION -> CONDICION_LOGICA
     'C : CL'
     p[0] = p[1]
 
-def p_CCA(p):                           #CONDICION -> AND
+def p_CCA(p):                            #CONDICION -> AND
     'C : AND'
     p[0] = p[1]
 
-def p_CCO(p):                           #CONDICION -> OR
+def p_CCO(p):                            #CONDICION -> OR
     'C : OR'
     p[0] = p[1]
 
-def p_AND(p):                           #AND -> CONDICION_LOGICA && CONDICION_LOGICA
+def p_AND(p):                            #AND -> CONDICION_LOGICA && CONDICION_LOGICA
     'AND : CL && CL'
     p[0] = p[1]+p[2]+p[3]
 
-def p_OR(p):                           #OR -> CONDICION_LOGICA || CONDICION_LOGICA
+def p_OR(p):                             #OR -> CONDICION_LOGICA || CONDICION_LOGICA
     'OR : CL || CL'
     p[0] = p[1]+p[2]+p[3]
 
@@ -173,7 +173,7 @@ def p_CL5(p):                            #CONDICION_LOGICA -> E != E
     'CL : E != E'
     p[0] = p[1]+p[2]+p[3]+p[4]
 
-def p_EET(p):                           #E -> E+T
+def p_EET(p):                            #E -> E+T
     'E : E + T'
     p[0] = p[1]+p[2]+p[3]
 
@@ -181,19 +181,19 @@ def p_EET2(p):                           #E -> E-T
     'E : E - T'
     p[0] = p[1]+p[2]+p[3]
 
-def p_ET(p):                               #E -> T
+def p_ET(p):                             #E -> T
     'E : T'
     p[0] = p[1]
 
-def p_TTID(p):                               #T-> T*ID
+def p_TTID(p):                           #T-> T*ID
     'T : T * ID'
     p[0] = p[1]+p[2]+p[3]
 
-def p_TTID1(p):                               #T-> T/ID
+def p_TTID1(p):                          #T-> T/ID
     'T : T/ID'
     p[0] = p[1]+p[2]+p[3]
 
-def p_TID(p):                                #T -> ID
+def p_TID(p):                            #T -> ID
     'T : ID'
     p[0] = p[1]
 
